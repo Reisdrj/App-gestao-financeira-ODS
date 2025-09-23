@@ -1,11 +1,66 @@
-{% extends 'base.html' %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
 
-{% block title %}Dashboard{% endblock %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
 
-{% block content %}
-<div class="container mx-auto p-8">
-    <h1 class="text-3xl font-bold mb-4">Bem-vindo, {{ request.user.username }}!</h1>
-    <p class="mb-4">Você está logado com sucesso.</p>
-    <a href="{% url 'logout' %}" class="bg-red-500 text-white py-2 px-4 rounded hover:bg-red-600 transition">Sair</a>
-</div>
-{% endblock %}
+<body class="bg-gray-100">
+    <!-- Sidebar -->
+    <div id="sidebar" class="fixed top-0 left-0 h-screen w-16 bg-[#12213d] transition-all duration-300 ease-in-out">
+        <!-- Hamburger Button -->
+        <div class="flex items-center">
+            <button id="menu-btn" class="w-16 h-16 flex items-center justify-center text-white">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16">
+            </path>
+            </svg>
+            </button>
+            <span class="text-white text-xl font-bold hidden transition-opacity duration-300" id="logo-text">SaveSpark</span>
+        </div>
+
+        <!-- Menu Items -->
+        <nav class="mt-8">
+            <div class="px-4 space-y-4 hover:">
+                <a href="#" class="flex items-center text-white hover:bg-gray-700 p-2 rounded-lg overflow-hidden group">
+                    <img src="{% static 'img/save-money.png' %}"></img>
+                    <span class="ml-2 hidden group-hover:opacity-100 transition-opacity duration-300 whitespace-nowrap">Transactions</span>
+                </a>
+                <!-- Add more menu items as needed -->
+            </div>
+        </nav>
+    </div>
+
+    <!-- Main Content -->
+    <div class="ml-16 p-8">
+        <h1 class="text-2xl font-bold">Dashboard Content</h1>
+        <!-- Add your main content here -->
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menu-btn');
+        const sidebar = document.getElementById('sidebar');
+        const menuTexts = document.querySelectorAll('#sidebar nav span');
+        const logoText = document.getElementById('logo-text');
+
+        menuBtn.addEventListener('click', () => {
+            if (sidebar.classList.contains('w-16')) {
+                sidebar.classList.remove('w-16');
+                sidebar.classList.add('w-64');
+                menuTexts.forEach(text => text.classList.remove('hidden'));
+                logoText.classList.remove('hidden');
+            } else {
+                sidebar.classList.remove('w-64');
+                sidebar.classList.add('w-16');
+                menuTexts.forEach(text => text.classList.add('hidden'));
+                logoText.classList.add('hidden');
+            }
+        });
+    </script>
+</body>
+
+</html></svg></button>

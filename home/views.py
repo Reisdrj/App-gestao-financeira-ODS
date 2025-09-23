@@ -22,6 +22,10 @@ def redirect_login(request):
 #             return redirect('dashboard')
 #         return HttpResponse("ERRO")
 
+def user_logout(request):
+    logout(request)
+    return redirect('Login')
+
 def user_login(request):
     if request.method == 'POST':
         form = LoginForm(request, data=request.POST)
@@ -42,7 +46,7 @@ def user_login(request):
     
 
 def dashboard(request):
-    return HttpResponse("fera DEMAIS!")
+    return render(request, 'dashboard.html')
 
 def register(request):
     if request.method == 'POST':
