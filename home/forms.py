@@ -18,7 +18,7 @@ class LoginForm(AuthenticationForm):
     )
 
 class RegisterForm(UserCreationForm):
-    email = forms.EmailField(required=True, widget=forms.EmailInput(attrs={
+    email = forms.CharField(required=True, widget=forms.TextInput(attrs={
         'class': 'w-full p-2 border rounded',
         'placeholder': 'Email'
     }))
@@ -37,4 +37,4 @@ class RegisterForm(UserCreationForm):
 
     class Meta:
         model = User
-        fields = ['username', 'email', 'password1', 'password2']
+        fields = ['email', 'username', 'password1', 'password2']

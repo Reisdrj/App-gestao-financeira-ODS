@@ -127,3 +127,5 @@ STATIC_URL = 'static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
+# PERSONAL SETTINGS
+SESSION_COOKIE_AGE = 172800  # 2 days in seconds

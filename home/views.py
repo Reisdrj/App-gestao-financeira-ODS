@@ -46,6 +46,8 @@ def user_login(request):
     
 
 def dashboard(request):
+    if not request.user.is_authenticated:
+        return redirect('Login')
     return render(request, 'dashboard.html')
 
 def register(request):
